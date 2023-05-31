@@ -1,0 +1,73 @@
+﻿<Window x:Name="winFindingCallNumbers"  x:Class="PROG7312_ST10121910.Knowing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG7312_ST10121910"
+        mc:Ignorable="d"
+        Height="600" Width="1000"
+     Title="Knowing" WindowStartupLocation="CenterScreen"  Loaded="winFindingCallNumbers_Loaded">
+    <Grid Background="#545454">
+
+        <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="/TBG (1).png" Margin="24,2,0,0"/>
+
+        <StackPanel Orientation="Horizontal" Height="72" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0" Width="432">
+            <Button  MinWidth="100" Margin="10,5,0,0" BorderBrush="#00707070" Click="ButtonHome_Click" Width="69" Height="73"  >
+                <Button.Background>
+                    <ImageBrush ImageSource="/outline_home_white_24dp.png"/>
+                </Button.Background>
+
+
+            </Button>
+            <Button x:Name="ButtonBook"  MinWidth="100" Margin="10,5,0,0" BorderBrush="#00707070" Width="32" Height="60" Click="ButtonBook_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/books.png"/>
+                </Button.Background>
+
+
+            </Button>
+            <Button x:Name="ButtonMix"  MinWidth="100" Margin="10,5,0,0" BorderBrush="#00707070" Width="32" Height="60" Click="ButtonMix_Click"  >
+                <Button.Background>
+                    <ImageBrush ImageSource="/match.png"/>
+                </Button.Background>
+
+
+            </Button>
+            <Button x:Name="ButtonQuiz"  MinWidth="100" Margin="10,5,0,0" BorderBrush="#00707070" Width="24" Height="60"  Click="ButtonQuiz_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/quiz.png"/>
+                </Button.Background>
+
+
+            </Button>
+        </StackPanel>
+        <ListView Margin="140,300,0,0" Name="ListViewQuiz" HorizontalAlignment="Left" VerticalAlignment="Top" Width="340" Height="168" IsEnabled="false">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <Label x:Name="lbQuestionTitle" Content="QUESTION:" HorizontalAlignment="Left" Margin="56,170,0,0" VerticalAlignment="Top"  FontSize="14" FontFamily="Yu Gothic UI Light" Foreground="White" RenderTransformOrigin="1.905,1.759" />
+        <Label x:Name="lbQuestion" Content="Label" HorizontalAlignment="Left" Margin="56,200,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Yu Gothic UI Light" Foreground="White" Visibility="Hidden"/>
+        <Label x:Name="lbAnswerTitle" Content="POSSIBLE ANSWER:" HorizontalAlignment="Left" Margin="56,250,0,0" VerticalAlignment="Top"  FontSize="14" FontFamily="Yu Gothic UI Light" Foreground="White" RenderTransformOrigin="1.905,1.759" />
+        <TextBlock x:Name="tbHowTo" Text="How To Play?" HorizontalAlignment="Left" Margin="715,135,0,0" VerticalAlignment="Top"  FontSize="18" FontFamily="Yu Gothic UI Light" Foreground="White" TextDecorations="Underline" RenderTransformOrigin="0.758,0.533" />
+        <Button   x:Name="btStartQuiz" Content="START QUIZ" HorizontalAlignment="Left" Margin="76,495,0,0" VerticalAlignment="Top" Width="150" Height="40" FontSize="16" FontFamily="Yu Gothic UI Light" RenderTransformOrigin="0.14,0.475" Click="btStartQuiz_Click" >
+
+        </Button>
+        <Button   x:Name="btStartQuizDisabled" Content="NEXT QUESTION" HorizontalAlignment="Left" Margin="76,495,0,0" VerticalAlignment="Top" Width="150" Height="40" FontSize="16" FontFamily="Yu Gothic UI Light" RenderTransformOrigin="0.14,0.475" Click="btStartQuiz_Click" IsEnabled="False" Visibility="Hidden"/>
+        <Button x:Name="btEndQuiz" Content="END QUIZ" HorizontalAlignment="Left" Margin="338,495,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" FontFamily="Yu Gothic UI Light" RenderTransformOrigin="0.14,0.475" Visibility="Visible" Click="btEndQuiz_Click" />
+
+        <Button   x:Name="btEndQuizDisabled" Content="END QUIZ" HorizontalAlignment="Left" Margin="338,496,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" FontFamily="Yu Gothic UI Light" RenderTransformOrigin="0.14,0.475" Visibility="Visible" IsEnabled="False">
+
+        </Button>
+
+        <TextBlock HorizontalAlignment="Left" Margin="602,183,0,0" TextWrapping="Wrap" FontSize="12" FontFamily="Yu Gothic UI Light" Foreground="White" VerticalAlignment="Top" Height="383" Width="362"><Run Text="Begin by pressing &quot;Start Quiz&quot;. Once you have done so the game will "/><LineBreak/><Run Text="commence."/><LineBreak/><Run/><LineBreak/><Run Text="Look at the space under 'QUESTION'  for the question that requires you to use the listbox under 'POSSIBLE ANSWER' to try and get the correct answer."/><LineBreak/><Run/><LineBreak/><Run Text="To register your answer you are required to double click to lock in your "/><LineBreak/><Run Text="answer. Depending on if your answer is correct or incorrect a popup will"/><LineBreak/><Run Text="appear."/><LineBreak/><Run/><LineBreak/><Run Text="If you have the correct answer, you will be prompted to press &quot;NEXT QUESTION&quot; button to proceed to the next stage."/><LineBreak/><Run/><LineBreak/><Run Text="To register your answer you are required to double click to lock in your "/><LineBreak/><Run Text="answer. Depending on if your answer is correct or incorrect a popup will"/><LineBreak/><Run Text="appear."/><LineBreak/><Run/><LineBreak/><Run Text="You may continue to play till you get the answer wrong and it'll reset your points."/><LineBreak/><Run/><LineBreak/><Run Text="It's a race against the clock to get those points."/></TextBlock>
+        <TextBlock x:Name="tbCurrentScore" Text="0" HorizontalAlignment="Left" Margin="303,129,0,0" VerticalAlignment="Top"  FontSize="16" FontFamily="Yu Gothic UI Light" Foreground="White" RenderTransformOrigin="1.388,-0.812" Visibility="Visible" Width="70"/>
+        <TextBlock x:Name="tbCurrentPoint" Text="POINTS" HorizontalAlignment="Left" Margin="292,94,0,0" VerticalAlignment="Top"  FontSize="12" FontFamily="Yu Gothic UI Light" Foreground="White" />
+        <Label x:Name="lbNumQTitle" Content="ROUND: 1/2" HorizontalAlignment="Left" Margin="326,250,0,0" VerticalAlignment="Top"  FontSize="14" FontFamily="Yu Gothic UI Light" Foreground="White" RenderTransformOrigin="1.905,1.759" Visibility="Hidden"/>
+        <TextBlock x:Name="tbTimeDisplay" Text="00:00:00" HorizontalAlignment="Left" Margin="381,125,0,0" VerticalAlignment="Top"  FontSize="16" FontFamily="Yu Gothic UI Light" Foreground="White" />
+        <TextBlock x:Name="tbRoundTimer" Text="ROUND TIMER" HorizontalAlignment="Left" Margin="372,94,0,0" VerticalAlignment="Top"  FontSize="12" FontFamily="Yu Gothic UI Light" Foreground="White" />
+    </Grid>
+</Window>
